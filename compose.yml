@@ -9,13 +9,13 @@ services:
         source: ./cdk
         target: /cdk
     tty: true
-  batch:
+  app:
     build: 
       context: .
-      dockerfile: ./container/batch/Dockerfile
+      dockerfile: ./container/app/Dockerfile
     volumes:
       - type: bind
-        source: ./batch
+        source: ./app
         target: /app
       - type: bind
         source: ./.aws
