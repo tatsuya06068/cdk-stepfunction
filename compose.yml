@@ -1,0 +1,23 @@
+version: '3.9'
+services:
+  cdk:
+    build: 
+      context: .
+      dockerfile: ./container/cdk/Dockerfile
+    volumes:
+      - type: bind
+        source: ./cdk
+        target: /cdk
+    tty: true
+  batch:
+    build: 
+      context: .
+      dockerfile: ./container/batch/Dockerfile
+    volumes:
+      - type: bind
+        source: ./batch
+        target: /app
+      - type: bind
+        source: ./.aws
+        target: /.aws/
+    tty: true
